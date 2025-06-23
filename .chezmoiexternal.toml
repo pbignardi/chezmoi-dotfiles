@@ -1,0 +1,15 @@
+[".zsh/zsh-autosuggestions"]
+    type = "git-repo"
+	url = "https://github.com/zsh-users/zsh-autosuggestions"
+
+[".zsh/zsh-syntax-highlight"]
+    type = "git-repo"
+	url = "https://github.com/zsh-users/zsh-syntax-highlighting"
+
+[".zsh/zsh-completions"]
+    type = "git-repo"
+	url = "https://github.com/zsh-users/zsh-completions"
+
+[".zsh/fzf-tab"]
+    type = "git-repo"
+	url = "https://github.com/Aloxaf/fzf-tab"

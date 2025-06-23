@@ -1,0 +1,46 @@
+#!/usr/bin/env bash
+# tmsc - TMux Session Creator
+# You can define dirs to include and to exclude by defining
+# `include_paths` and `exclude_paths` arrays in ~/.tmsm.conf.
+# By default ~, ~/projects and ~/notes are included dirs.
+
+[[ -f $HOME/.tmsm.conf ]] && source $HOME/.tmsm.conf
+
+include_paths+=(~/projects ~/notes ~)
+includes=""
+for p in "${include_paths[@]}"; do
+    includes=$includes" --search-path "${p}
+done
+
+excludes=""
+for p in "${exclude_paths[@]}"; do
+    excludes=$excludes" --exclude '${p}'"
+done
+
+if [[ -z $excludes ]]; then
+    session=$(eval "fd $includes --exact-depth 1 --type d --follow | fzf --tmux")
+else
+    session=$(eval "fd $includes $excludes --exact-depth 1 --type d --follow | fzf --tmux")
+fi
+
+if [[ -z $session ]]; then
+	exit 0
+fi
+
+# take basename, lower case, remove spaces and dots
+session_name=$(basename $session | awk '{print tolower($0)}' | tr '. ' '-')
+
+# if session does not exist, create it
+if ! tmux has-session -t=$session_name 2> /dev/null; then
+	tmux new-session -ds $session_name -c $session
+fi
+
+# check if we are currently in a tmux session
+if [[ -z $TMUX ]]; then
+	att_or_switch='attach'
+else
+	att_or_switch='switch-client'
+fi
+
+tmux $att_or_switch -t $session_name
+
