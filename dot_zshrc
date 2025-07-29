@@ -70,3 +70,4 @@ fi
 # Initialize juliaup
 export PATH=$PATH:$HOME/.juliaup/bin
 
+export SSH_AUTH_SOCK=$HOME/.var/app/com.bitwarden.desktop/data/.bitwarden-ssh-agent.sock
