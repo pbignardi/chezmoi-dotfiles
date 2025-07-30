@@ -1,0 +1,7 @@
+{{ if .work_laptop -}}
+{{ (bitwarden "item" "8028ff0c-64ea-42f7-83f0-b29b008ca35d" ).sshKey.publicKey -}}
+{{ else if .personal_laptop -}}
+{{ (bitwarden "item" "37124b4a-8174-4a42-b933-b29a00ea5511" ).sshKey.publicKey -}}
+{{ else -}}
+{{ (bitwarden "item" "b0f6c361-c3d3-4156-abf6-b29b008a74d5" ).sshKey.publicKey -}}
+{{ end -}}
