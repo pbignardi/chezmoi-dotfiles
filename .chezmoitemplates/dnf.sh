@@ -26,6 +26,7 @@ curl
 wget
 openssh
 flatpak
+socat
 
 neovim
 fzf

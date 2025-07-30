@@ -1,0 +1,15 @@
+{{ if (and (eq .chezmoi.os "linux") (eq .chezmoi.osRelease.id "arch")) -}}
+{{ template "pacman.sh" . -}}
+{{ else if (and (eq .chezmoi.os "linux") (eq .chezmoi.osRelease.id "debian")) -}}
+{{ template "apt.sh" . -}}
+{{ else if (and (eq .chezmoi.os "linux") (eq .chezmoi.osRelease.id "fedora")) -}}
+{{ template "dnf.sh" . -}}
+{{ else if (eq .chezmoi.os "darwin") -}}
+{{ template "brew.sh" . -}}
+{{ else if (eq .chezmoi.os "windows") -}}
+{{ template "winget.ps1" -}}
+{{ end -}}
+
+{{ if eq .chezmoi.os "linux" -}}
+{{ template "flatpak.sh" . -}}
+{{ end -}}

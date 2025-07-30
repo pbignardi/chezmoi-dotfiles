@@ -1,0 +1,7 @@
+{{ if eq .chezmoi.os "linux" -}}
+#!/usr/bin/env bash
+
+echo "Changing shell to ZSH"
+chsh -s /bin/zsh $USER
+echo "!! Change will take effect after logout"
+{{ end -}}

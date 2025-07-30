@@ -29,6 +29,7 @@ base-devel
 base
 openssh
 flatpak
+socat
 
 neovim
 fzf
