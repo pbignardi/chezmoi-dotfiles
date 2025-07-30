@@ -1,0 +1,9 @@
+{{- $work_laptop := promptBoolOnce . "work_laptop" "Is this a work laptop? (true/false)" -}}
+{{- $personal_laptop := promptBoolOnce . "personal_laptop" "Is this your personal laptop? (true/false)" -}}
+
+[edit]
+    command = "nvim"
+
+[data]
+    work_laptop = {{ $work_laptop }}
+    personal_laptop = {{ $personal_laptop }}
