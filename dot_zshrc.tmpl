@@ -58,16 +58,18 @@ export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 # setup fzf
 eval "$(fzf --zsh)"
 
-# setup bitwarden autocompletion
-eval "$(bw completion --shell zsh); compdef _bw bw;"
-
-# setup pyenv and pyenv-virtualenv
-if command -v pyenv >/dev/null 2>&1; then
-    eval "$(pyenv init -)"
-    eval "$(pyenv virtualenv-init -)"
-fi
-
 # Initialize juliaup
 export PATH=$PATH:$HOME/.juliaup/bin
 
+{{ if eq .chezmoi.os "linux" -}}
+{{ if (.chezmoi.kernel.osrelease | lower | contains "microsoft") -}}
+# setup ssh bridge to windows bitwarden
+source $HOME/bin/agent-bridge.sh
+{{ else -}}
+# setup socket for flatpak bitwarden
 export SSH_AUTH_SOCK=$HOME/.var/app/com.bitwarden.desktop/data/.bitwarden-ssh-agent.sock
+{{ end -}}
+{{ else -}}
+# setup socket for mac bitwarden
+export SSH_AUTH_SOCK=$HOME/.bitwarden-ssh-agent.sock
+{{ end -}}
