@@ -41,11 +41,15 @@ sudo pacman -Syu --noconfirm --needed {{ .packages.pacman.extra | join " " }}
 sudo apt update && sudo apt upgrade -y
 
 # core apt packages
-sudo apt install -y {{ .packages.apt.core | join " " }}
+{{ range .packages.apt.core -}}
+sudo apt-get install -y { . }}
+{{ end -}}
 
 {{ if not .wsl -}}
 echo "Installing extra packages"
-sudo apt install -y {{ .packages.apt.extra | join " " }}
+{{ range .packages.apt.extra -}}
+sudo apt-get install -y { . }}
+{{ end -}}
 
 # install wezterm
 curl -fsSL https://apt.fury.io/wez/gpg.key | sudo gpg --yes --dearmor -o /usr/share/keyrings/wezterm-fury.gpg
