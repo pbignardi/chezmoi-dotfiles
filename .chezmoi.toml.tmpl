@@ -14,6 +14,9 @@
     linux = {{ $linux }}
     mac = {{ $mac }}
 
+[hooks.read-source-state.pre]
+    command = ".local/share/chezmoi/.install_bwcli.sh"
+
 {{ if $wsl -}}
 [hooks.apply.post]
     script = "bin/wsl-copy-config.sh"

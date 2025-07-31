@@ -144,7 +144,6 @@
         "npm",
         "deno",
         "podman",
-        "bitwarden-cli"
     ]
     cask = [
         "skim",
