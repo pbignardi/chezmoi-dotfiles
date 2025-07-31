@@ -42,13 +42,13 @@ sudo apt update && sudo apt upgrade -y
 
 # core apt packages
 {{ range .packages.apt.core -}}
-sudo apt-get install -y { . }}
+sudo apt-get install -y {{ . }}
 {{ end -}}
 
 {{ if not .wsl -}}
 echo "Installing extra packages"
 {{ range .packages.apt.extra -}}
-sudo apt-get install -y { . }}
+sudo apt-get install -y {{ . }}
 {{ end -}}
 
 # install wezterm
