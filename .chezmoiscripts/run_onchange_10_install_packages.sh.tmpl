@@ -12,11 +12,7 @@ echo "Installing core packages"
 
 {{ if eq .chezmoi.osRelease.id "arch" -}}
 # core pacman packages
-sudo pacman -Syu --noconfirm --needed - <<EOF
-{{ range .packages.pacman.core -}}
-{{ . }}
-{{ end -}}
-EOF
+sudo pacman -Syu --noconfirm --needed {{ .packages.pacman.core | join " " -}}
 
 # enable reflector
 if ! systemctl is-active --quiet reflector; then
@@ -38,30 +34,18 @@ fi
 
 {{ if not .wsl -}}
 echo "Installing extra packages"
-sudo pacman -Syu --noconfirm --needed - <<EOF
-{{ range .packages.pacman.extra -}}
-{{ . }}
-{{ end -}}
-EOF
+sudo pacman -Syu --noconfirm --needed {{ .packages.pacman.extra | join " " -}}
 {{ end -}}
 
 {{ else if eq .chezmoi.osRelease.id "debian" -}}
 sudo apt update && sudo apt upgrade -y
 
 # core apt packages
-sudo apt install -y - <<EOF
-{{ range .packages.apt.core -}}
-{{ . }}
-{{ end -}}
-EOF
+sudo apt install -y {{ .packages.apt.core | join " " -}}
 
 {{ if not .wsl -}}
 echo "Installing extra packages"
-sudo apt install -y - <<EOF
-{{ range .packages.apt.extra -}}
-{{ . }}
-{{ end -}}
-EOF
+sudo apt install -y {{ .packages.apt.extra | join " " -}}
 
 # install wezterm
 curl -fsSL https://apt.fury.io/wez/gpg.key | sudo gpg --yes --dearmor -o /usr/share/keyrings/wezterm-fury.gpg
@@ -72,19 +56,11 @@ sudo chmod 644 /usr/share/keyrings/wezterm-fury.gpg
 {{ else if eq .chezmoi.osRelease.id "fedora" -}}
 sudo dnf upgrade -y
 # core dnf packages
-sudo dnf install -y - <<EOF
-{{ range .packages.dnf.core -}}
-{{ . }}
-{{ end -}}
-EOF
+sudo dnf install -y {{ .packages.dnf.core | join " " -}}
 
 {{ if not .wsl -}}
 echo "Installing extra packages"
-sudo dnf install -y - <<EOF
-{{ range .packages.dnf.extra -}}
-{{ . }}
-{{ end -}}
-EOF
+sudo dnf install -y {{ .packages.dnf.extra | join " " -}}
 
 # install wezterm
 sudo dnf copr enable wezfurlong/wezterm-nightly
