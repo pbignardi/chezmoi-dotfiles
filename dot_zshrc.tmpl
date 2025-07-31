@@ -61,15 +61,13 @@ eval "$(fzf --zsh)"
 # Initialize juliaup
 export PATH=$PATH:$HOME/.juliaup/bin
 
-{{ if eq .chezmoi.os "linux" -}}
-{{ if (.chezmoi.kernel.osrelease | lower | contains "microsoft") -}}
+{{ if .wsl -}}
 # setup ssh bridge to windows bitwarden
 source $HOME/bin/agent-bridge.sh
-{{ else -}}
+{{ else if .linux -}}
 # setup socket for flatpak bitwarden
 export SSH_AUTH_SOCK=$HOME/.var/app/com.bitwarden.desktop/data/.bitwarden-ssh-agent.sock
-{{ end -}}
-{{ else -}}
+{{ else if .mac -}}
 # setup socket for mac bitwarden
 export SSH_AUTH_SOCK=$HOME/.bitwarden-ssh-agent.sock
 {{ end -}}
