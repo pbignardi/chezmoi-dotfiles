@@ -2,7 +2,7 @@
 
 if type bw > /dev/null 2>&1; then
     bw login --check > /dev/null 2>&1
-    if test "$?" -neq 0; then
+    if [ $? -ne 0 ]; then
         bw login
     fi
     export BW_SESSION=$(bw unlock --raw)
