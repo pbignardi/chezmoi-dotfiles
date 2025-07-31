@@ -1,0 +1,7 @@
+{{ if eq .chezmoi.os "linux" -}}
+#!/usr/bin/env bash
+# install oh my posh on linux only (mac is installed as brew package)
+if ! command -v oh-my-posh >/dev/null 2>&1; then
+    curl -s https://ohmyposh.dev/install.sh | bash -s
+fi
+{{ end -}}

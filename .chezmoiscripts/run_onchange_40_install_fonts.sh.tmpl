@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+omp() {
+    {{ if (not .wsl) -}}
+        oh-my-posh $@
+    {{ else -}}
+        oh-my-posh.exe $@
+    {{ end -}}
+}
+{{ range .fonts -}}
+omp font install {{ . }}
+{{ end -}}

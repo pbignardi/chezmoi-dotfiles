@@ -1,5 +1,8 @@
 {{- $work_laptop := promptBoolOnce . "work_laptop" "Is this a work laptop? (true/false)" -}}
 {{- $personal_laptop := promptBoolOnce . "personal_laptop" "Is this your personal laptop? (true/false)" -}}
+{{- $wsl := and (eq .chezmoi.os "linux") (.chezmoi.kernel.osrelease | lower | contains "microsoft" ) -}}
+{{- $linux := and (eq .chezmoi.os "linux") (not (.chezmoi.kernel.osrelease | lower | contains "microsoft" )) -}}
+{{- $mac := (eq .chezmoi.os "darwin") -}}
 
 [edit]
     command = "nvim"
@@ -7,3 +10,11 @@
 [data]
     work_laptop = {{ $work_laptop }}
     personal_laptop = {{ $personal_laptop }}
+    wsl = {{ $wsl }}
+    linux = {{ $linux }}
+    mac = {{ $mac }}
+
+{{ if $wsl -}}
+[hooks.apply.post]
+    script = "~/bin/wsl-copy-config.sh"
+{{ end -}}

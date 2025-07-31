@@ -1,0 +1,162 @@
+[packages]
+    flatpak = [
+        "com.bitwarden.desktop",
+        "com.github.ahrm.sioyek"
+    ]
+    winget = [
+        "wez.wezterm",
+        "albertony.npiperelay",
+        "astral-sh.uv",
+        "Git.Git",
+        "TortoiseGit.TortoiseGit ",
+        "Bitwarden.Bitwarden",
+        "Bitwarden.CLI",
+        "ahrm.sioyek",
+        "KDE.Okular",
+        "Alacritty.Alacritty",
+        "JanDeDobbeleer.OhMyPosh",
+    ]
+
+[packages.pacman]
+    core = [
+        "git",
+        "stow",
+        "jq",
+        "unzip",
+        "zsh",
+        "gcc",
+        "go",
+        "gum",
+        "npm",
+        "deno",
+        "curl",
+        "wget",
+        "base-devel",
+        "base",
+        "openssh",
+        "flatpak",
+        "socat",
+        "neovim",
+        "fzf",
+        "tmux",
+        "fd",
+        "ripgrep",
+        "bat",
+        "btop",
+        "reflector"
+    ]
+    extra = [
+        "wezterm",
+        "alacritty",
+        "noto-fonts-emoji",
+        "distrobox",
+        "podman",
+        "zathura",
+        "zathura-pdf-poppler"
+    ]
+
+[packages.apt]
+    core = [
+        "git",
+        "stow",
+        "jq",
+        "unzip",
+        "zsh",
+        "gcc",
+        "go",
+        "npm",
+        "curl",
+        "wget",
+        "openssh-client",
+        "flatpak",
+        "socat",
+        "neovim",
+        "fzf",
+        "tmux",
+        "fd",
+        "ripgrep",
+        "bat",
+        "btop",
+        "zathura",
+        "zathura-pdf-poppler"
+    ]
+    extra = [
+        "alacritty",
+        "fonts-noto-color-emoji",
+        "distrobox",
+        "podman"
+    ]
+
+[packages.dnf]
+    core = [
+        "git",
+        "stow",
+        "jq",
+        "unzip",
+        "zsh",
+        "gcc",
+        "go",
+        "gum",
+        "nodejs-npm",
+        "curl",
+        "wget",
+        "openssh",
+        "flatpak",
+        "socat",
+        "neovim",
+        "fzf",
+        "tmux",
+        "fd",
+        "ripgrep",
+        "bat",
+        "btop",
+        "zathura",
+        "zathura-pdf-poppler",
+        "google-noto-color-emoji-fonts"
+    ]
+    extra = [
+        "alacritty",
+        "distrobox",
+        "podman"
+    ]
+
+[packages.brew]
+    brew = [
+        "oh-my-posh",
+        "wget",
+        "curl",
+        "git",
+        "stow",
+        "jq",
+        "unzip",
+        "zsh",
+        "gcc",
+        "go",
+        "gum",
+        "nodejs",
+        "neovim",
+        "fzf",
+        "tmux",
+        "fd",
+        "ripgrep",
+        "bat",
+        "btop",
+        "npm",
+        "deno",
+        "podman",
+    ]
+    cask = [
+        "skim",
+        "wezterm",
+        "alacritty",
+        "bitwarden",
+        "font-noto-color-emoji",
+    ]
+
+[fonts]
+    ohmyposh = [
+        "JetBrainsMono",
+        "UbuntuMono",
+        "IosevkaTerm",
+        "IBMPlexMono"
+    ]
