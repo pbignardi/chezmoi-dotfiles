@@ -4,6 +4,7 @@
 oh-my-posh.exe font install {{ . }}
 {{ end -}}
 {{ else -}}
+export PATH=~/bin:$PATH
 {{ range .fonts.ohmyposh -}}
 oh-my-posh font install {{ . }}
 {{ end -}}
