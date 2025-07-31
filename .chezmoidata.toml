@@ -153,9 +153,10 @@
         "font-noto-color-emoji",
     ]
 
-fonts = [
-    "JetBrainsMono",
-    "UbuntuMono",
-    "IosevkaTerm",
-    "IBMPlexMono"
-]
+[fonts]
+    ohmyposh = [
+        "JetBrainsMono",
+        "UbuntuMono",
+        "IosevkaTerm",
+        "IBMPlexMono",
+    ]

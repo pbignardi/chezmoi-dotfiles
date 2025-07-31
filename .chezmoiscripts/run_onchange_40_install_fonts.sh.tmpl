@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
 {{ if .wsl -}}
-{{ range .fonts -}}
+{{ range .fonts.ohmyposh -}}
 oh-my-posh.exe font install {{ . }}
 {{ end -}}
 {{ else -}}
-{{ range .fonts -}}
+{{ range .fonts.ohmyposh -}}
 oh-my-posh font install {{ . }}
 {{ end -}}
 {{ end -}}
