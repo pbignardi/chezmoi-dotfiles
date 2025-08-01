@@ -2,7 +2,7 @@
 {{ if .wsl -}}
 # wsl only packages
 {{ range .packages.winget -}}
-winget.exe -e --id {{ . }}
+winget.exe install -e --id {{ . }}
 {{ end -}}
 {{ end -}}
 
