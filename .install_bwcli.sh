@@ -23,5 +23,7 @@ else
 
     echo "Bitwarden login"
     bw login
+    echo "Sync Bitwarden valut"
+    bw sync
     cd -
 fi
