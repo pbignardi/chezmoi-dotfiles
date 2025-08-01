@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
 
-export PATH=~/bin:$PATH
 if type bw > /dev/null 2>&1; then
     bw login --check > /dev/null 2>&1
     if [ $? -ne 0 ]; then
@@ -9,9 +8,6 @@ if type bw > /dev/null 2>&1; then
     fi
 else
     cd /tmp
-    if ! [[ -d ~/bin ]]; then
-        mkdir ~/bin
-    fi
 
     if [[ $(uname -s) == "Linux" ]]; then
         wget https://github.com/bitwarden/clients/releases/download/cli-v2025.7.0/bw-linux-2025.7.0.zip
@@ -22,6 +18,10 @@ else
     fi
 
     chmod +x bw
-    mv bw ~/bin/bw
+    echo "Installing Bitwarden CLI"
+    sudo install bw /usr/local/bin
+
+    echo "Bitwarden login"
+    bw login
     cd -
 fi
