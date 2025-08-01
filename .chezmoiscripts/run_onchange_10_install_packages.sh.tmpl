@@ -10,7 +10,7 @@ winget.exe -e --id {{ . }}
 {{ if eq .chezmoi.os "linux" -}}
 echo "Installing core packages"
 
-{{ if eq .chezmoi.osRelease.id "arch" -}}
+{{ if has .chezmoi.osRelease.id .linux.id_like.archlinux -}}
 # core pacman packages
 sudo pacman -Syu --noconfirm --needed {{ .packages.pacman.core | join " " }}
 
@@ -37,7 +37,7 @@ echo "Installing extra packages"
 sudo pacman -Syu --noconfirm --needed {{ .packages.pacman.extra | join " " }}
 {{ end -}}
 
-{{ else if eq .chezmoi.osRelease.id "debian" -}}
+{{ else if has .chezmoi.osRelease.id .linux.id_like.debian -}}
 sudo apt update && sudo apt upgrade -y
 
 # core apt packages
@@ -58,7 +58,7 @@ sudo chmod 644 /usr/share/keyrings/wezterm-fury.gpg
 sudo apt-get install -y wezterm
 {{ end -}}
 
-{{ else if eq .chezmoi.osRelease.id "fedora" -}}
+{{ else if has .chezmoi.osRelease.id .linux.id_like.fedora -}}
 sudo dnf upgrade -y
 # core dnf packages
 sudo dnf install -y {{ .packages.dnf.core | join " " }}
