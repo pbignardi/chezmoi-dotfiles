@@ -1,8 +1,10 @@
 #!/usr/bin/env bash
 
+export PATH=~/bin:$PATH
 if type bw > /dev/null 2>&1; then
     bw login --check > /dev/null 2>&1
     if [ $? -ne 0 ]; then
+        echo "Bitwarden login"
         bw login
     fi
 else
@@ -21,6 +23,5 @@ else
 
     chmod +x bw
     mv bw ~/bin/bw
-    export PATH=~/bin:$PATH
     cd -
 fi
