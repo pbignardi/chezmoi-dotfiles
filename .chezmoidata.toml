@@ -161,7 +161,7 @@
         "IBMPlexMono",
     ]
 
-[linux.idlike]
+[osRelease.idlike]
     debian = [
         "ubuntu",
         "debian"
