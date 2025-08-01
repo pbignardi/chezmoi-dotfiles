@@ -6,10 +6,10 @@ below is a table to keep track of what works as intended.
 
 | OS | Works | Notes |
 | --------------- | --------------- | --------------- |
-| Arch |  |  |
-| Debian |  |  |
-| Ubuntu |  |  |
-| Fedora |  |  |
+| Arch | ✅|  |
+| Debian | ✅ |  |
+| Ubuntu | ✅ |  |
+| Fedora | ✅ |  |
 | macOS |  |  |
 | Windows WSL |  |  |
 
